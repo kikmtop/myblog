@@ -1,6 +1,7 @@
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare"; // Cloudflare Workers 适配器
 import { setMaxListeners } from "node:events";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
@@ -49,6 +50,20 @@ export default defineConfig({
 	base: "/",
 	trailingSlash: "always",
 
+	// Cloudflare Workers 配置
+	output: "hybrid", // 使用 hybrid 模式：静态页面预渲染，动态页面 SSR
+
+	// Cloudflare 适配器
+	adapter: cloudflare({
+		platformProxy: {
+			enabled: true,
+		},
+		runtime: {
+			mode: "local",
+			enablePlatformProxy: true,
+		},
+	}),
+	
 	// 图像优化配置
 	image: {
 		// 全局响应式布局

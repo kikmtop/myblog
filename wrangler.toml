@@ -1,7 +1,30 @@
 name = "myblog"
-main = "./dist/_worker.js"  # 必须指定入口文件
+main = "./dist/_worker.js"
 compatibility_date = "2026-05-08"
-compatibility_flags = ["nodejs_compat"]  # 必须开启 Node.js 兼容
+compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = "./dist"
+
+# 构建输出目录
+# 构建后 assets 将从 ./dist 目录提供
+
+# 路由配置（可选）
+# routes = [
+#   { pattern = "blog.example.com", zone_name = "example.com" }
+# ]
+
+# 环境变量
+[vars]
+NODE_ENV = "production"
+
+# KV 命名空间绑定（可选，如有需要取消注释）
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+
+# D1 数据库绑定（可选，如有需要取消注释）
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "myblog-db"
+# database_id = "your-d1-database-id"

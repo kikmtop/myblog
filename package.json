@@ -7,7 +7,10 @@
     "start": "astro dev",
     "check": "astro check",
     "build": "node scripts/generate-icons.js && astro build && pagefind --site dist",
+    "build:workers": "node scripts/generate-icons.js && astro build && wrangler deploy --dry-run",
     "preview": "astro preview",
+    "preview:workers": "astro build && wrangler dev",
+    "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
     "new-post": "node scripts/new-post.js",
@@ -18,6 +21,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/cloudflare": "^13.5.0",
     "@astrojs/compiler-rs": "^0.1.10",
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
