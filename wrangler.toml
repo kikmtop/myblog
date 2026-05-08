@@ -1,8 +1,7 @@
 name = "myblog"
-compatibility_date = "2026-05-08" # 更为今日
+main = "./dist/_worker.js"  # 必须指定入口文件
+compatibility_date = "2026-05-08"
+compatibility_flags = ["nodejs_compat"]  # 必须开启 Node.js 兼容
 
 [assets]
 directory = "./dist"
-
-[vars]
-NODE_VERSION = "22"
